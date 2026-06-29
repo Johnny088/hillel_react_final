@@ -1,0 +1,16 @@
+body {
+  background: radial-gradient(
+    circle,
+    rgba(35, 35, 35, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  font-family: 'Geist', sans-serif;
+  font-optical-sizing: auto;
+  color: #ffffff;
+  font-size: 16px;
+}
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 20px;
+}

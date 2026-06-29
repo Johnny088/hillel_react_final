@@ -1,0 +1,6 @@
+I need to create axios instance 
+
+export const api = axios.create({
+    baseURL: "your url",
+    withCredentials: true
+});
