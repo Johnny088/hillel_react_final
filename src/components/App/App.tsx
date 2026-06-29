@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
 import { HomePage } from '../../Pages/HomePage/HomePage';
-import { SignIn } from '../SignIn/SignIn';
-import { SignUp } from '../SignUp.tsx/SIgnUp';
+import { SignIn } from '../../Pages/SignIn/SignIn';
+import { SignUp } from '../../Pages/SignUp.tsx/SIgnUp';
 export const App = () => {
   return (
     <>

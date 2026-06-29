@@ -1,15 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { AuthForm } from '../AuthForm.tsx/AuthForm';
+import { AuthForm } from '../../components/AuthForm.tsx/AuthForm';
 
 import { signUp } from '../../api/authService';
 import type { AuthData } from '../../types/index';
+import { selectSetUser, userAuthStore } from '../../stores/authStore';
 
 export const SignUp = () => {
   const navigate = useNavigate();
 
+  const setUser = userAuthStore(selectSetUser);
+
   const login = async (authData: AuthData) => {
     const user = await signUp(authData);
-    console.log(user);
+
+    setUser(user);
+
     navigate('/');
   };
 

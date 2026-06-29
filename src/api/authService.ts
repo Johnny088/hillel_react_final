@@ -3,12 +3,12 @@ import { api } from './api';
 
 export const signUp = async (authData: AuthData) => {
   const { data } = await api.post('/auth/sign-up', authData);
-  console.log(data);
+  return data;
 };
 
 export const signIn = async (authData: AuthData) => {
   const { data } = await api.post('/auth/sign-in', authData);
-  console.log(data);
+  return data;
 };
 
 export const resreshSession = () => {
