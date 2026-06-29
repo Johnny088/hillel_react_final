@@ -1,4 +1,4 @@
-import type { AuthData } from '../../types/auth';
+import type { AuthData } from '../../types/index';
 
 interface AuthProps {
   onSubmit: (authdata: AuthData) => void;

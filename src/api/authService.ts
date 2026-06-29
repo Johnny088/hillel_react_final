@@ -1,4 +1,4 @@
-import type { AuthData } from '../types/auth';
+import type { AuthData } from '../types/index';
 import { api } from './api';
 
 export const signUp = async (authData: AuthData) => {

@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../AuthForm.tsx/AuthForm';
-import type { AuthData } from '../../types/auth';
+
 import { signUp } from '../../api/authService';
+import type { AuthData } from '../../types/index';
 
 export const SignUp = () => {
   const navigate = useNavigate();
