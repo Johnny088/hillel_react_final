@@ -16,8 +16,8 @@ export const AuthForm = ({ onSubmit }: AuthProps) => {
     <>
       <form action={handleSubmit}>
         <input type="text" name="email" placeholder="email" />
-        <input type="text" name="password" placeholder="password" />
-        <button>Sign-in</button>
+        <input type="password" name="password" placeholder="password" />
+        <button>Submit</button>
       </form>
     </>
   );
