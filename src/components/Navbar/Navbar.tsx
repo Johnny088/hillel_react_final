@@ -20,6 +20,9 @@ export const NavBar = () => {
       <Link to="/">
         <button>Home</button>
       </Link>
+      <Link to="/movies">
+        <button>Movies</button>
+      </Link>
       <Link to="/sign-in">
         <button>Sign-in</button>
       </Link>

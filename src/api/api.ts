@@ -1,14 +1,16 @@
-import axios from 'axios';
-import { resreshSession } from './authService';
+import axios, { type AxiosResponse } from 'axios';
+import type { RefreshResponse } from '../types/index';
 
 export const api = axios.create({
   baseURL: 'http://localhost:8000',
   withCredentials: true,
 });
 
+let refreshPromise: null | Promise<AxiosResponse<RefreshResponse>> = null;
+
 api.interceptors.response.use(
   res => res,
-  error => {
+  async error => {
     console.log(error); //---------------------------------------------- temp
     if (!error.response || error.response.status !== 401) {
       return Promise.reject(error);
@@ -20,8 +22,14 @@ api.interceptors.response.use(
       return Promise.reject(error);
     }
 
+    if (!refreshPromise) {
+      refreshPromise = api
+        .post('/auth/refresh')
+        .finally(() => (refreshPromise = null));
+    }
+
     try {
-      resreshSession();
+      await refreshPromise;
       return api(originalRequest);
     } catch (error) {
       window.location.href = '/login';
