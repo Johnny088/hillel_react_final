@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { NavBar } from '../Navbar/Navbar';
-import { selectIsAuth, userAuthStore } from '../../stores/authStore';
+import { selectIsAuth, useAuthStore } from '../../stores/authStore';
 
 export const Layout = () => {
-  const isAuth = userAuthStore(selectIsAuth);
+  const isAuth = useAuthStore(selectIsAuth);
   return (
     <>
       <header>

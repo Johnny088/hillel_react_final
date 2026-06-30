@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logout, resreshSession } from '../../api/authService';
+import { selectClearAuth, useAuthStore } from '../../stores/authStore';
 
 export const NavBar = () => {
-  const refreshTest = () => {
-    resreshSession();
+  const navigate = useNavigate();
+  const authClear = useAuthStore(selectClearAuth);
+  const refreshHandler = async () => {
+    const result = await resreshSession();
+    return result;
   };
-  const exit = () => {
+  const logoutHandler = () => {
     logout();
+    authClear();
+    navigate('/');
   };
 
   return (
@@ -20,8 +26,8 @@ export const NavBar = () => {
       <Link to="sign-up">
         <button>Sign-up</button>
       </Link>
-      <button onClick={refreshTest}>Refresh</button>
-      <button onClick={exit}>Logout</button>
+      <button onClick={refreshHandler}>Refresh</button>
+      <button onClick={logoutHandler}>Logout</button>
     </>
   );
 };

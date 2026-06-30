@@ -8,7 +8,7 @@ interface AuthStore {
   clearAuth: () => void;
 }
 
-export const userAuthStore = create<AuthStore>()(set => ({
+export const useAuthStore = create<AuthStore>()(set => ({
   isAuth: false,
   user: null,
   setUser: user => set(() => ({ user, isAuth: true })),
@@ -18,3 +18,7 @@ export const userAuthStore = create<AuthStore>()(set => ({
 export const selectSetUser = (state: AuthStore) => state.setUser;
 
 export const selectIsAuth = (state: AuthStore) => state.isAuth;
+
+export const selectUser = (state: AuthStore) => state.user;
+
+export const selectClearAuth = (state: AuthStore) => state.clearAuth;

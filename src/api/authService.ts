@@ -1,18 +1,19 @@
-import type { AuthData } from '../types/index';
+import type { AuthData, RefreshResponse, User } from '../types/index';
 import { api } from './api';
 
 export const signUp = async (authData: AuthData) => {
-  const { data } = await api.post('/auth/sign-up', authData);
+  const { data } = await api.post<User>('/auth/sign-up', authData);
   return data;
 };
 
 export const signIn = async (authData: AuthData) => {
-  const { data } = await api.post('/auth/sign-in', authData);
+  const { data } = await api.post<User>('/auth/sign-in', authData);
   return data;
 };
 
-export const resreshSession = () => {
-  api.post('/auth/refresh');
+export const resreshSession = async () => {
+  const { data } = await api.post<RefreshResponse>('/auth/refresh');
+  return data.success;
 };
 
 export const logout = () => {

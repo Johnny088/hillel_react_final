@@ -3,12 +3,12 @@ import { AuthForm } from '../../components/AuthForm.tsx/AuthForm';
 
 import { signUp } from '../../api/authService';
 import type { AuthData } from '../../types/index';
-import { selectSetUser, userAuthStore } from '../../stores/authStore';
+import { selectSetUser, useAuthStore } from '../../stores/authStore';
 
 export const SignUp = () => {
   const navigate = useNavigate();
 
-  const setUser = userAuthStore(selectSetUser);
+  const setUser = useAuthStore(selectSetUser);
 
   const login = async (authData: AuthData) => {
     const user = await signUp(authData);
