@@ -1,9 +1,14 @@
 import type { Movie } from '../types';
 import { api } from './api';
 
+interface MoviesResponse {
+  movies: Movie[];
+}
+
 export const getMovies = async () => {
-  const { data } = await api.get<Movie>('/movies');
-  return data;
+  const { data } = await api.get<MoviesResponse>('/movies');
+  console.log(111, data);
+  return data.movies;
 };
 
 export const addNewMovie = async () => {
