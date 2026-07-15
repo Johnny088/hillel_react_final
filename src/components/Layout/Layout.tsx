@@ -6,10 +6,10 @@ export const Layout = () => {
   const isAuth = useAuthStore(selectIsAuth);
   return (
     <>
-      <header>
+      <header className="mt-8 mb-25">
         <NavBar />
       </header>
-      <main>
+      <main className="mx-auto ">
         <Outlet />
       </main>
       <footer></footer>

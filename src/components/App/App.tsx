@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from '../Layout/Layout';
 import { HomePage } from '../../Pages/HomePage/HomePage';
 import { SignIn } from '../../Pages/SignIn/SignIn';
-import { SignUp } from '../../Pages/SignUp.tsx/SIgnUp';
+import { SignUp } from '../../Pages/SignUp/SIgnUp';
 import { MoviesPage } from '../../Pages/MoviesPage/MoviesPage';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { AuthForm } from '../../components/AuthForm.tsx/AuthForm';
+import { AuthForm } from '../../components/AuthForm/AuthForm';
 
 import { signUp } from '../../api/authService';
 import type { AuthData } from '../../types/index';

@@ -15,10 +15,12 @@ export const MoviesPage = () => {
     <>
       {isAuth ? (
         <>
-          <iframe src={`https://www.youtube.com/embed/hverb7siYJ8`} />
-          <ul>
+          <ul className="flex flex-row flex-wrap gap-7 justify-center">
             {movies.map(movie => (
-              <li key={movie._id}>
+              <li
+                key={movie._id}
+                className="gap-7 hover:scale-150 hover:z-50 duration-400 ease-in-out"
+              >
                 <MovieItemPage movie={movie} />
               </li>
             ))}

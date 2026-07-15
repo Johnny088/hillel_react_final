@@ -12,7 +12,7 @@ export const getMovies = async () => {
 };
 
 export const addNewMovie = async () => {
-  const { data } = await api.post<Movie>('/movies/');
+  const { data } = await api.post<Movie>('/movies');
   return data;
 };
 
