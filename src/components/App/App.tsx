@@ -6,6 +6,7 @@ import { SignUp } from '../../Pages/SignUp/SIgnUp';
 import { MoviesPage } from '../../Pages/MoviesPage/MoviesPage';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
+import { MovieCreatePage } from '../../Pages/MovieCreatePage/MovieCreatePage';
 export const App = () => {
   return (
     <>
@@ -40,6 +41,14 @@ export const App = () => {
             element={
               <PrivateRoute>
                 <MoviesPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="add"
+            element={
+              <PrivateRoute>
+                <MovieCreatePage />
               </PrivateRoute>
             }
           />

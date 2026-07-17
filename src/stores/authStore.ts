@@ -3,16 +3,20 @@ import type { User } from '../types/index';
 
 interface AuthStore {
   isAuth: boolean;
+  isLoading: boolean;
   user: User | null;
   setUser: (user: User) => void;
+  setIsLoading: () => void;
   clearAuth: () => void;
 }
 
 export const useAuthStore = create<AuthStore>()(set => ({
   isAuth: false,
   user: null,
+  isLoading: true,
   setUser: user => set(() => ({ user, isAuth: true })),
   clearAuth: () => set(() => ({ user: null, isAuth: false })),
+  setIsLoading: () => set(() => ({ isLoading: false })),
 }));
 
 export const selectSetUser = (state: AuthStore) => state.setUser;

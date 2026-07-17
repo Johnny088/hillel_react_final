@@ -1,4 +1,4 @@
-type Genres = [
+export type Genres =
   | 'Action'
   | 'Adventure'
   | 'Animation'
@@ -17,8 +17,7 @@ type Genres = [
   | 'TV Movie'
   | 'Thriller'
   | 'War'
-  | 'Western',
-];
+  | 'Western';
 
 export interface User {
   _id: string;
@@ -34,14 +33,14 @@ export interface AuthData {
 }
 
 export interface Movie {
-  _id: string;
+  // _id: string;
   title: string;
   description: string;
-  release_date: string;
-  vote_average: string;
+  release_date: Date;
+  vote_average: number;
   posterUrl: string;
   trailerUrl: string;
-  genre: Genres;
+  genre: Genres[];
 }
 
 export interface RefreshResponse {

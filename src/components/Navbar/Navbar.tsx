@@ -29,6 +29,9 @@ export const NavBar = () => {
       <Link to="/sign-up">
         <button>Sign-up</button>
       </Link>
+      <Link to="/add">
+        <button>add movie</button>
+      </Link>
       <button onClick={refreshHandler}>Refresh</button>
       <button onClick={logoutHandler}>Logout</button>
     </>

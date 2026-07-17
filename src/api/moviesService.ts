@@ -16,12 +16,12 @@ export const addNewMovie = async () => {
   return data;
 };
 
-export const updateMovie = async (_id: Movie['_id'], movieData: Movie) => {
+export const updateMovie = async (_id: string, movieData: Movie) => {
   const { data } = await api.put<Movie>(`movies/:${_id}`, movieData);
   return data;
 };
 
-export const deleteMovie = async (_id: Movie['_id']) => {
+export const deleteMovie = async (_id: string) => {
   const { data } = await api.delete<Movie>(`/movies/:${_id}`);
   return data;
 };
