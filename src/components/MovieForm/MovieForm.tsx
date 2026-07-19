@@ -1,129 +1,9 @@
-// import { Formik, Form, Field } from 'formik';
-// import * as yup from 'yup';
-// import type { Movie, Genres } from '../../types/index';
-
-// const genres: Genres[] = [];
-
-// const movieValues: Movie = {
-//   // _id: '',
-//   title: '',
-//   description: '',
-//   release_date: new Date(),
-//   vote_average: 0,
-//   posterUrl: '',
-//   trailerUrl: '',
-//   genre: [],
-// };
-
-// const movieSchema = yup.object().shape({});
-
-// export const MovieForm = () => {
-//   console.log('form component');
-//   const handleSubmit = (values: Movie) => {
-//     console.log(values);
-//   };
-//   return (
-//     <Formik
-//       onSubmit={handleSubmit}
-//       // validationSchema={movieSchema}
-//       initialValues={movieValues}
-//     >
-//       <Form className="bg-amber-100 w-3xl text-black flex column">
-//         <label>
-//           Title: <Field type="text" name="title" />
-//         </label>
-
-//         <label>
-//           Release_date: <Field type="date" name="release_date" />
-//         </label>
-
-//         <label>
-//           Vote_average: <Field type="number" name="vote_average" />
-//         </label>
-
-//         <label>
-//           PosterUrl: <Field type="text" name="posterUrl" />
-//         </label>
-
-//         <label>
-//           TrailerUrl: <Field type="text" name="trailerUrl" />
-//         </label>
-
-//         <fieldset>
-//           <legend>Genres</legend>
-//           <label>
-//             Action: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Adventure: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Animation: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Comedy: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Crime: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Documentary: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Drama: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Family: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Fantasy: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             History: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Horror: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Music: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Mystery: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Romance: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Sci-Fi: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             TV Movie: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Thriller: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             War: <Field type="checkbox" name="genres" />
-//           </label>
-//           <label>
-//             Western: <Field type="checkbox" name="genres" />
-//           </label>
-//         </fieldset>
-
-//         <label>
-//           Description: <Field as="textarea" name="description" />
-//         </label>
-//         <button>submit</button>
-//       </Form>
-//     </Formik>
-//   );
-// };
-
 import { Formik, Form, Field, type FormikHelpers, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import type { Movie } from '../../types/index';
 
 const initialValues: Movie = {
+  _id: '',
   title: '',
   description: '',
   releaseDate: new Date(),
@@ -173,10 +53,13 @@ const movieSchema = yup.object().shape({
 
 interface Props {
   movieAction: (values: Movie) => void;
+  currentMovieData: Movie | null;
 }
 
-export const MovieForm = ({ movieAction }: Props) => {
+export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
   console.log('form component');
+
+  console.log(currentMovieData);
 
   const handleSubmit = (values: Movie, formikHelpers: FormikHelpers<Movie>) => {
     console.log(values);
@@ -192,8 +75,9 @@ export const MovieForm = ({ movieAction }: Props) => {
 
   return (
     <Formik
+      enableReinitialize
       onSubmit={handleSubmit}
-      initialValues={initialValues}
+      initialValues={currentMovieData ? currentMovieData : initialValues}
       validationSchema={movieSchema}
     >
       <Form className="max-w-2xl mx-auto p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-5 text-slate-800 mb-16">

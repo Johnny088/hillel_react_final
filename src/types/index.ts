@@ -33,7 +33,7 @@ export interface AuthData {
 }
 
 export interface Movie {
-  // _id: string;
+  _id: string;
   title: string;
   description: string;
   releaseDate: Date;

@@ -3,14 +3,21 @@ import type { Movie } from '../../types/index';
 import { selectIsAuth, useAuthStore } from '../../stores/authStore';
 import { getMovies } from '../../api/moviesService';
 import { MovieItemPage } from '../MovieItemPage/MovieItemPage';
+import { Pagination } from '../../components/Pagination/Pagination';
 
 export const MoviesPage = () => {
   const isAuth = useAuthStore(selectIsAuth);
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const clickPageHandler = () => {
+    setPage(3);
+  };
 
   useEffect(() => {
-    getMovies().then(movies => setMovies(movies));
+    getMovies(page).then(movies => setMovies(movies));
   }, []);
+  const paginationHandler = () => {};
   return (
     <>
       {isAuth ? (
@@ -25,6 +32,12 @@ export const MoviesPage = () => {
               </li>
             ))}
           </ul>
+
+          <Pagination
+            clickPageHandler={clickPageHandler}
+            totalPages={totalPages}
+            paginationHandler={paginationHandler}
+          />
         </>
       ) : (
         <h1>you aren't autorized</h1>
