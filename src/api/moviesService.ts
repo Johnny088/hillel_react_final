@@ -11,8 +11,8 @@ export const getMovies = async () => {
   return data.movies;
 };
 
-export const addNewMovie = async () => {
-  const { data } = await api.post<Movie>('/movies');
+export const addNewMovie = async (movieData: Movie) => {
+  const { data } = await api.post<Movie>('/movies', movieData);
   return data;
 };
 

@@ -36,8 +36,8 @@ export interface Movie {
   // _id: string;
   title: string;
   description: string;
-  release_date: Date;
-  vote_average: number;
+  releaseDate: Date;
+  voteAverage: number;
   posterUrl: string;
   trailerUrl: string;
   genre: Genres[];

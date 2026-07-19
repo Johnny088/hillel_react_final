@@ -6,7 +6,8 @@ import { SignUp } from '../../Pages/SignUp/SIgnUp';
 import { MoviesPage } from '../../Pages/MoviesPage/MoviesPage';
 import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
-import { MovieCreatePage } from '../../Pages/MovieCreatePage/MovieCreatePage';
+import { MovieCreatePage } from '../../Pages/CreateMoviePage/CreateMoviePage';
+import { UpdateMoviePage } from '../../Pages/UpdateMoviePage/UpdateMoviePage';
 export const App = () => {
   return (
     <>
@@ -49,6 +50,14 @@ export const App = () => {
             element={
               <PrivateRoute>
                 <MovieCreatePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="movies/:id"
+            element={
+              <PrivateRoute>
+                <UpdateMoviePage />
               </PrivateRoute>
             }
           />
