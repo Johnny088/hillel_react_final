@@ -12,6 +12,7 @@ export const SignIn = () => {
   const login = async (authData: AuthData) => {
     const user = await signIn(authData);
 
+    console.log(user);
     setUser(user);
 
     navigate('/');

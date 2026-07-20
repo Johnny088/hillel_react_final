@@ -7,9 +7,11 @@ import { Pagination } from '../../components/Pagination/Pagination';
 
 export const MoviesPage = () => {
   const isAuth = useAuthStore(selectIsAuth);
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
+
   const clickPageHandler = (newPage: number) => {
     setPage(newPage);
     console.log(page);

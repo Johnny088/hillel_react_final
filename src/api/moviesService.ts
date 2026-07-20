@@ -35,6 +35,6 @@ export const updateMovie = async (_id: Movie['_id'], movieData: Movie) => {
 };
 
 export const deleteMovie = async (_id: Movie['_id']) => {
-  const { data } = await api.delete<Movie>(`/movies/:${_id}`);
+  const { data } = await api.delete<Movie>(`/movies/${_id}`);
   return data;
 };
