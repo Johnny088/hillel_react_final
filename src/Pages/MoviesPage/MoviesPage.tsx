@@ -30,7 +30,7 @@ export const MoviesPage = () => {
             {movies.map(movie => (
               <li
                 key={movie._id}
-                className="gap-7 hover:scale-150 hover:z-50 duration-400 ease-in-out"
+                className="gap-7  hover:scale-150 hover:z-50 duration-400 ease-in-out"
               >
                 <MovieItemPage movie={movie} />
               </li>
