@@ -10,19 +10,23 @@ export const MoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const clickPageHandler = () => {
-    setPage(3);
+  const clickPageHandler = (newPage: number) => {
+    setPage(newPage);
+    console.log(page);
   };
 
   useEffect(() => {
-    getMovies(page).then(movies => setMovies(movies));
-  }, []);
-  const paginationHandler = () => {};
+    console.log(`useEffect page ${page}`);
+    getMovies(page).then(({ movies, totalPages }) => {
+      setMovies(movies);
+      setTotalPages(totalPages);
+    });
+  }, [page]);
   return (
     <>
       {isAuth ? (
         <>
-          <ul className="flex flex-row flex-wrap gap-7 justify-center">
+          <ul className="flex flex-row flex-wrap gap-7 justify-center mb-16">
             {movies.map(movie => (
               <li
                 key={movie._id}
@@ -36,7 +40,6 @@ export const MoviesPage = () => {
           <Pagination
             clickPageHandler={clickPageHandler}
             totalPages={totalPages}
-            paginationHandler={paginationHandler}
           />
         </>
       ) : (

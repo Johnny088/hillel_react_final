@@ -11,7 +11,7 @@ export const MovieItemPage = ({ movie }: Props) => {
     <>
       <h3 className="text-red-400 mb-5">{movie.title}</h3>
       <Link to={`/movies/${movie._id}`}>
-        <button>Edit</button>
+        <img src="" alt="" />
       </Link>
 
       {/* <video src={movie.trailerUrl} poster={movie.posterUrl} controls /> */}

@@ -3,17 +3,20 @@ import { api } from './api';
 
 interface MoviesResponse {
   movies: Movie[];
+  page: number;
+  lomit: number;
+  totalPages: number;
 }
 
 export const getMovies = async (page: number = 1, limit: number = 10) => {
   const { data } = await api.get<MoviesResponse>('/movies', {
-    headers: {
+    params: {
       page,
       limit,
     },
   });
   console.log(111, data);
-  return data.movies;
+  return data;
 };
 
 export const getMovieById = async (id: Movie['_id']) => {
