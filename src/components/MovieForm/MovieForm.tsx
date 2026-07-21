@@ -1,6 +1,7 @@
 import { Formik, Form, Field, type FormikHelpers, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import type { Movie } from '../../types/index';
+import { allGenres } from '../../constants/index';
 
 const initialValues: Movie = {
   _id: '',
@@ -12,28 +13,6 @@ const initialValues: Movie = {
   trailerUrl: '',
   genre: [],
 };
-
-const allGenres = [
-  'Action',
-  'Adventure',
-  'Animation',
-  'Comedy',
-  'Crime',
-  'Documentary',
-  'Drama',
-  'Family',
-  'Fantasy',
-  'History',
-  'Horror',
-  'Music',
-  'Mystery',
-  'Romance',
-  'Sci-Fi',
-  'TV Movie',
-  'Thriller',
-  'War',
-  'Western',
-];
 
 const movieSchema = yup.object().shape({
   title: yup.string().required(),
