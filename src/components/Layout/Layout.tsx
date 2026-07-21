@@ -6,7 +6,7 @@ export const Layout = () => {
   const isAuth = useAuthStore(selectIsAuth);
   return (
     <>
-      <header className="mt-8 mb-25">
+      <header className="mt-8 mb-8">
         <NavBar />
       </header>
       <main className="mx-auto ">

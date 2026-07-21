@@ -4,15 +4,22 @@ import { api } from './api';
 interface MoviesResponse {
   movies: Movie[];
   page: number;
-  lomit: number;
+  limit: number;
   totalPages: number;
 }
+interface GetMovieParams {
+  page: number;
+  limit: number;
+  search: string;
+}
 
-export const getMovies = async (page: number = 1, limit: number = 10) => {
+export const getMovies = async ({ page, limit, search }: GetMovieParams) => {
+  if (!search) search = '';
   const { data } = await api.get<MoviesResponse>('/movies', {
     params: {
       page,
       limit,
+      ...(search.trim() ? { search: search.trim() } : {}),
     },
   });
   console.log(111, data);
