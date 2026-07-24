@@ -6,15 +6,22 @@ import { MovieItemPage } from '../MovieItemPage/MovieItemPage';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { useQuery } from '@tanstack/react-query';
-import { selectGenre, useMoviesStore } from '../../stores/moviesStore';
+import {
+  selectGenre,
+  selectSetTotalPages,
+  selectTotalPages,
+  useMoviesStore,
+} from '../../stores/moviesStore';
 
 export const MoviesPage = () => {
+  const setTotalPages = useMoviesStore(selectSetTotalPages);
   const isAuth = useAuthStore(selectIsAuth);
   const [page, setPage] = useState<number>(1);
-  const [totalPages] = useState<number>(0);
   const [search, setSearch] = useState('');
   const [limit] = useState(10);
   const genre = useMoviesStore(selectGenre);
+
+  const totalPages = useMoviesStore(selectTotalPages);
 
   const {
     data: movies,
@@ -23,8 +30,11 @@ export const MoviesPage = () => {
   } = useQuery({
     queryKey: ['movies', search, page, limit, genre],
     queryFn: () => getMovies({ search, page, limit, genre }),
+
     retry: 1,
   });
+
+  setTotalPages(movies?.totalPages ?? 1);
 
   const clickPageHandler = (newPage: number) => {
     setPage(newPage);

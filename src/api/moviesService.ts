@@ -31,6 +31,7 @@ export const getMovies = async ({
     },
   });
   console.log(111, data);
+
   return data;
 };
 
