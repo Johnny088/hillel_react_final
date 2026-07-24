@@ -1,4 +1,4 @@
-import type { Movie } from '../types';
+import type { CreateMovie, Movie } from '../types';
 import { api } from './api';
 
 interface MoviesResponse {
@@ -40,7 +40,7 @@ export const getMovieById = async (id: Movie['_id']) => {
   return data;
 };
 
-export const addNewMovie = async (movieData: Movie) => {
+export const addNewMovie = async (movieData: CreateMovie) => {
   const { data } = await api.post<Movie>('/movies', movieData);
   return data;
 };

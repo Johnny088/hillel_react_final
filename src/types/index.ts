@@ -44,6 +44,16 @@ export interface Movie {
   genre: Genres[];
 }
 
+export interface CreateMovie {
+  title: string;
+  description: string;
+  releaseDate: Date;
+  voteAverage: number;
+  posterUrl: string;
+  trailerUrl: string;
+  genre: Genres[];
+}
+
 export interface RefreshResponse {
   message: string;
   success: boolean;
