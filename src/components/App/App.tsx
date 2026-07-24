@@ -8,6 +8,7 @@ import { PrivateRoute } from '../PrivateRoute/PrivateRoute';
 import { PublicRoute } from '../PublicRoute/PublicRoute';
 import { MovieCreatePage } from '../../Pages/CreateMoviePage/CreateMoviePage';
 import { UpdateMoviePage } from '../../Pages/UpdateMoviePage/UpdateMoviePage';
+import { NotFoundPage } from '../../Pages/NotFoundPage/NotFoundPage';
 export const App = () => {
   return (
     <>
@@ -62,6 +63,7 @@ export const App = () => {
             }
           />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
