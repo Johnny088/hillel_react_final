@@ -3,7 +3,7 @@ import type { RefreshResponse } from '../types/index';
 import { useAuthStore } from '../stores/authStore';
 
 export const api = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: import.meta.env.BASE_URL,
   withCredentials: true,
 });
 
