@@ -11,15 +11,23 @@ interface GetMovieParams {
   page: number;
   limit: number;
   search: string;
+  genre: string;
 }
 
-export const getMovies = async ({ page, limit, search }: GetMovieParams) => {
+export const getMovies = async ({
+  page,
+  limit,
+  search,
+  genre,
+}: GetMovieParams) => {
   if (!search) search = '';
+  if (genre === 'All Genres') genre = '';
   const { data } = await api.get<MoviesResponse>('/movies', {
     params: {
       page,
       limit,
       ...(search.trim() ? { search: search.trim() } : {}),
+      ...(genre.trim() ? { genre: genre.trim() } : {}),
     },
   });
   console.log(111, data);

@@ -1,20 +1,16 @@
-// import { useState } from 'react';
 import { allGenres } from '../../constants';
-// import type { Genres } from '../../types';
+import type { Genres } from '../../types/index';
 
 interface Props {
-  genreHandler: (value: string) => void;
+  genreHandler: (value: Genres) => void;
 }
 
 export const GenreDropdown = ({ genreHandler }: Props) => {
-  //   const [isOpen, setIsOpen] = useState(false);
-  //   const [selectedGenre, setSelectedGenre] = useState<Genres | null>(null);
-  const genres = ['', ...allGenres];
-  const onChangeHandler = (genre: string) => {
+  const onChangeHandler = (genre: Genres) => {
     console.log(genre);
     genreHandler(genre);
   };
-  console.log(genres);
+  console.log(allGenres);
 
   return (
     <label>
@@ -22,11 +18,11 @@ export const GenreDropdown = ({ genreHandler }: Props) => {
       <select
         name="Genre"
         className="bg-amber-50 ms-4 text-black"
-        onChange={e => onChangeHandler(e.target.value)}
+        onChange={e => onChangeHandler(e.target.value as Genres)}
       >
-        {genres.map(genre => (
+        {allGenres.map(genre => (
           <option key={genre} value={genre} className="text-black">
-            {genre === '' ? 'All Genres' : genre}
+            {genre}
           </option>
         ))}
       </select>

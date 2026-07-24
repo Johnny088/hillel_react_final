@@ -1,4 +1,5 @@
 export type Genres =
+  | 'All Genres'
   | 'Action'
   | 'Adventure'
   | 'Animation'

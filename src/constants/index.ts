@@ -1,4 +1,5 @@
 export const allGenres = [
+  'All Genres',
   'Action',
   'Adventure',
   'Animation',
