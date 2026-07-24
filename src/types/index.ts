@@ -21,7 +21,7 @@ export type Genres =
   | 'Western';
 
 export interface User {
-  _id: string;
+  _id: string | null;
   username: string | null;
   email: string;
   avatarUrl: string | null;
@@ -47,4 +47,5 @@ export interface Movie {
 export interface RefreshResponse {
   message: string;
   success: boolean;
+  user: User;
 }

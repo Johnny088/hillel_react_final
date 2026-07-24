@@ -1,10 +1,14 @@
+import { selectTotalPages, useMoviesStore } from '../../stores/moviesStore';
+
 interface Props {
-  totalPages: number;
+  // totalPages: number;
 
   clickPageHandler: (page: number) => void;
 }
 
-export const Pagination = ({ totalPages, clickPageHandler }: Props) => {
+export const Pagination = ({ clickPageHandler }: Props) => {
+  const totalPages = useMoviesStore(selectTotalPages);
+
   if (totalPages === 1) return null;
 
   const onClickHandler = (page: number) => {

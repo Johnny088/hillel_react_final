@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { Movie } from '../../types/index';
+import type { Movie, User } from '../../types/index';
 import ReactPlayer from 'react-player';
 import editIcon from '../../assets/video-editor.png';
 import deleteIcon from '../../assets/delete.png';
@@ -11,8 +11,8 @@ interface Props {
 }
 
 export const MovieItemPage = ({ movie }: Props) => {
-  const user = useAuthStore(selectUser);
-  console.log(user);
+  const user: User | null = useAuthStore(selectUser);
+  console.log(user?.role);
   if (!user) return;
   return (
     <>

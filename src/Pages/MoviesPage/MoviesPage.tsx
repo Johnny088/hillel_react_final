@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import type { Movie } from '../../types/index';
-import { selectIsAuth, useAuthStore } from '../../stores/authStore';
+import { selectIsAuth, selectUser, useAuthStore } from '../../stores/authStore';
 import { getMovies } from '../../api/moviesService';
 import { MovieItemPage } from '../MovieItemPage/MovieItemPage';
 import { Pagination } from '../../components/Pagination/Pagination';
@@ -9,7 +9,6 @@ import { useQuery } from '@tanstack/react-query';
 import {
   selectGenre,
   selectSetTotalPages,
-  selectTotalPages,
   useMoviesStore,
 } from '../../stores/moviesStore';
 
@@ -20,8 +19,6 @@ export const MoviesPage = () => {
   const [search, setSearch] = useState('');
   const [limit] = useState(10);
   const genre = useMoviesStore(selectGenre);
-
-  const totalPages = useMoviesStore(selectTotalPages);
 
   const {
     data: movies,
@@ -45,14 +42,11 @@ export const MoviesPage = () => {
     setSearch(queryKey);
     setPage(1);
   };
+  const user = useAuthStore(selectUser);
+  useEffect(() => {
+    console.log(user);
+  }, []);
 
-  // useEffect(() => {
-  //   console.log(`useEffect page ${page}`);
-  //   getMovies({ search, page, limit, genre }).then(({ movies, totalPages }) => {
-  //     setMovies(movies);
-  //     setTotalPages(totalPages);
-  //   });
-  // }, [search, page]);
   return (
     <>
       {isAuth ? (
@@ -70,10 +64,7 @@ export const MoviesPage = () => {
             ))}
           </ul>
 
-          <Pagination
-            clickPageHandler={clickPageHandler}
-            totalPages={totalPages}
-          />
+          <Pagination clickPageHandler={clickPageHandler} />
         </>
       ) : (
         <h1>you aren't autorized</h1>

@@ -13,7 +13,7 @@ export const signIn = async (authData: AuthData) => {
 
 export const resreshSession = async () => {
   const { data } = await api.post<RefreshResponse>('/auth/refresh');
-  return data.success;
+  return data;
 };
 
 export const logout = () => {
