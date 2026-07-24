@@ -4,7 +4,7 @@ import { useAuthStore } from '../stores/authStore';
 
 export const api = axios.create({
   // baseURL: import.meta.env.BASE_URL,
-  baseURL: 'https://hillel-node-final.onrender.com/',
+  baseURL: 'https://hillel-node-final.onrender.com',
   withCredentials: true,
 });
 
