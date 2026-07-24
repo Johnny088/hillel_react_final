@@ -45,7 +45,7 @@ export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
 
     movieAction(values);
 
-    formikHelpers.resetForm();
+    // formikHelpers.resetForm();
   };
 
   const inputClass =

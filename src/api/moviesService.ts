@@ -45,7 +45,10 @@ export const addNewMovie = async (movieData: CreateMovie) => {
   return data;
 };
 
-export const updateMovie = async (_id: Movie['_id'], movieData: Movie) => {
+export const updateMovie = async (
+  _id: Movie['_id'],
+  movieData: CreateMovie,
+) => {
   const { data } = await api.put<Movie>(`/movies/${_id}`, movieData);
   return data;
 };

@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { addNewMovie } from '../../api/moviesService';
 import { MovieForm } from '../../components/MovieForm/MovieForm';
 import type { Movie } from '../../types';
 
 export const MovieCreatePage = () => {
+  const navigate = useNavigate();
   const hanleCreateMovie = async (movieData: Movie) => {
     const newMovie = {
       title: movieData.title,
@@ -13,9 +15,11 @@ export const MovieCreatePage = () => {
       trailerUrl: movieData.trailerUrl,
       genre: movieData.genre,
     };
-    const result = await addNewMovie(newMovie);
+    const res = await addNewMovie(newMovie);
 
-    console.log(result);
+    if (!res) return;
+
+    navigate('/');
   };
   return (
     <>
