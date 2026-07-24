@@ -3,7 +3,8 @@ import type { RefreshResponse } from '../types/index';
 import { useAuthStore } from '../stores/authStore';
 
 export const api = axios.create({
-  baseURL: import.meta.env.BASE_URL,
+  // baseURL: import.meta.env.BASE_URL,
+  baseURL: 'https://hillel-node-final.onrender.com/',
   withCredentials: true,
 });
 
