@@ -12,7 +12,6 @@ interface Props {
 
 export const MovieItemPage = ({ movie }: Props) => {
   const user: User | null = useAuthStore(selectUser);
-  console.log(user?.role);
   if (!user) return;
   return (
     <>
@@ -35,7 +34,6 @@ export const MovieItemPage = ({ movie }: Props) => {
         </ul>
       )}
 
-      {/* <video src={movie.trailerUrl} poster={movie.posterUrl} controls /> */}
       <ReactPlayer
         src={movie.trailerUrl}
         playIcon={movie.posterUrl}

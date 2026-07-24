@@ -30,7 +30,6 @@ export const getMovies = async ({
       ...(genre.trim() ? { genre: genre.trim() } : {}),
     },
   });
-  console.log(111, data);
 
   return data;
 };

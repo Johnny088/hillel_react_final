@@ -7,10 +7,8 @@ interface Props {
 
 export const GenreDropdown = ({ genreHandler }: Props) => {
   const onChangeHandler = (genre: Genres) => {
-    console.log(genre);
     genreHandler(genre);
   };
-  console.log(allGenres);
 
   return (
     <label>

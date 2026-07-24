@@ -12,12 +12,10 @@ let refreshPromise: null | Promise<AxiosResponse<RefreshResponse>> = null;
 api.interceptors.response.use(
   res => res,
   async error => {
-    console.log(error); //---------------------------------------------- temp
     if (!error.response || error.response.status !== 401) {
       return Promise.reject(error);
     }
     const originalRequest = error.config;
-    console.log(originalRequest); //---------------------------------------- temp
 
     if (originalRequest.url.includes('/auth/refresh')) {
       return Promise.reject(error);

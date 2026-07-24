@@ -1,8 +1,6 @@
 import { selectTotalPages, useMoviesStore } from '../../stores/moviesStore';
 
 interface Props {
-  // totalPages: number;
-
   clickPageHandler: (page: number) => void;
 }
 
