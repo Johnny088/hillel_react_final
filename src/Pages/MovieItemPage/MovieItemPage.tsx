@@ -16,7 +16,7 @@ export const MovieItemPage = ({ movie }: Props) => {
   if (!user) return;
   return (
     <>
-      <h3 className="text-amber-50 mb-5 ">{movie.title}</h3>
+      <h3 className="text-amber-50  mb-5 ">{movie.title}</h3>
       {user.role === 'admin' && (
         <ul className="flex justify-end gap-4 mb-4 flex-wrap ">
           <li>
@@ -40,7 +40,7 @@ export const MovieItemPage = ({ movie }: Props) => {
         src={movie.trailerUrl}
         playIcon={movie.posterUrl}
         controls
-        className=""
+        width="100%"
       />
     </>
   );

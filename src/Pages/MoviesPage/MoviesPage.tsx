@@ -53,11 +53,11 @@ export const MoviesPage = () => {
         <>
           <SearchForm searchQuery={searchHandler} />
 
-          <ul className="flex flex-row flex-wrap gap-7 justify-center mb-16">
+          <ul className="flex flex-row flex-wrap gap-7 justify-center mb-16 px-4">
             {movies?.movies?.map(movie => (
               <li
                 key={movie._id}
-                className="gap-7  hover:scale-150 hover:z-50 duration-400 ease-in-out"
+                className="gap-7  md:hover:scale-150 hover:z-50 duration-400 ease-in-out"
               >
                 <MovieItemPage movie={movie} />
               </li>

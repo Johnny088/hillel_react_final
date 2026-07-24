@@ -5,7 +5,9 @@ export const HomePage = () => {
     'bg-red-600 hover:bg-red-800 transition duration-300 ease-in-out';
   return (
     <div className="flex justify-center items-center w-full min-h-screen flex-col ">
-      <h1 className="text-5xl mb-16">Unlimited movies, TV shows, and more</h1>
+      <h1 className=" text-2xl sm:text-4xl md:text-5xl mb-16">
+        Unlimited movies, TV shows, and more
+      </h1>
       <ul className="flex gap-8">
         <li>
           <Link to="/sign-in">

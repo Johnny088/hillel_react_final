@@ -36,12 +36,14 @@ export const UpdateMoviePage = () => {
   };
 
   return (
-    <>
-      <h1 className="text-center mb-8 text-3xl">Add a new movie</h1>
+    <div className="px-4">
+      <h1 className="text-center mb-8 text-xl sm:text-2xl md:text-3xl">
+        Add a new movie
+      </h1>
       <MovieForm
         movieAction={hanleUpdateMovie}
         currentMovieData={currentMovieData}
       />
-    </>
+    </div>
   );
 };

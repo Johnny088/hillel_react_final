@@ -23,7 +23,7 @@ export const MovieCreatePage = () => {
   };
   return (
     <>
-      <h1 className="text-center mb-8 text-3xl">Add a new movie</h1>
+      <h1 className="text-center mb-8 text-2xl md:text-3xl">Add a new movie</h1>
       <MovieForm movieAction={hanleCreateMovie} currentMovieData={null} />
     </>
   );

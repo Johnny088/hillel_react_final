@@ -19,7 +19,7 @@ export const AuthForm = ({ onSubmit }: AuthProps) => {
   return (
     <form
       action={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-white border border-slate-200 rounded-xl shadow-sm space-y-5 text-slate-800 mb-16"
+      className=" w-full max-w-md mx-auto p-4 sm:p-6 md:p-8 bg-white border border-slate-200 rounded-xl shadow-sm space-y-5 text-slate-800 mb-8 md:mb-16"
     >
       <label className={labelClass}>
         Email

@@ -19,9 +19,11 @@ export const SignIn = () => {
   };
 
   return (
-    <>
-      <h1 className="text-center text-5xl mb-8">Sign in</h1>
+    <div className="px-4">
+      <h1 className="text-center text-2xl sm:text-4xl md:text-5xl mb-8">
+        Sign In
+      </h1>
       <AuthForm onSubmit={login} />
-    </>
+    </div>
   );
 };

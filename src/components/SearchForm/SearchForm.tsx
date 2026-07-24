@@ -13,10 +13,10 @@ export const SearchForm = ({ searchQuery }: Props) => {
     }
   }, 500);
   return (
-    <div className="flex justify-center w-full mb-16">
+    <div className="flex justify-center  mb-16">
       Search:
       <input
-        className="bg-amber-50 text-black rounded-b-sm ms-4"
+        className="bg-amber-50 text-black rounded-b-sm ms-4 px-3"
         type="text"
         name="search"
         defaultValue={''}
