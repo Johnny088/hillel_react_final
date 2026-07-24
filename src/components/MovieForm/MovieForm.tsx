@@ -1,4 +1,4 @@
-import { Formik, Form, Field, type FormikHelpers, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import type { Movie } from '../../types/index';
 import { allGenres } from '../../constants/index';
@@ -40,7 +40,7 @@ export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
 
   console.log(currentMovieData);
 
-  const handleSubmit = (values: Movie, formikHelpers: FormikHelpers<Movie>) => {
+  const handleSubmit = (values: Movie) => {
     console.log(values);
 
     movieAction(values);
