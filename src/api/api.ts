@@ -1,6 +1,5 @@
 import axios, { type AxiosResponse } from 'axios';
 import type { RefreshResponse } from '../types/index';
-import { useAuthStore } from '../stores/authStore';
 
 export const api = axios.create({
   // baseURL: import.meta.env.BASE_URL,
