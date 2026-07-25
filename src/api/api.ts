@@ -27,10 +27,6 @@ api.interceptors.response.use(
     if (!refreshPromise) {
       refreshPromise = api
         .post<RefreshResponse>('/auth/refresh')
-        // .then(res => {
-        //   useAuthStore.getState().setUser(res.data.user);
-        //   return res;
-        // })
         .finally(() => (refreshPromise = null));
     }
 

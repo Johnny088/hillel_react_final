@@ -15,9 +15,6 @@ export const signIn = async (authData: AuthData) => {
 
 export const resreshSession = async () => {
   const { data } = await api.post<RefreshResponse>('/auth/refresh');
-  const user = await getCurrentUser();
-  console.log(user);
-  useAuthStore.getState().setUser(user);
   return data;
 };
 

@@ -4,19 +4,17 @@ import ReactPlayer from 'react-player';
 import editIcon from '../../assets/video-editor.png';
 import deleteIcon from '../../assets/delete.png';
 import { deleteMovie } from '../../api/moviesService';
-import { selectUser, useAuthStore } from '../../stores/authStore';
 
 interface Props {
   movie: Movie;
+  user: User | null;
 }
 
-export const MovieItemPage = ({ movie }: Props) => {
-  const user: User | null = useAuthStore(selectUser);
-  if (!user) return;
+export const MovieItemPage = ({ movie, user }: Props) => {
   return (
     <>
       <h3 className="text-amber-50  mb-5 ">{movie.title}</h3>
-      {user.role === 'admin' && (
+      {user?.role === 'admin' && (
         <ul className="flex justify-end gap-4 mb-4 flex-wrap ">
           <li>
             <Link to={`/movies/${movie._id}`}>

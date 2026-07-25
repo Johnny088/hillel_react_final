@@ -55,11 +55,6 @@ export const MoviesPage = () => {
 
   return (
     <>
-      {isFetching && isLoading && (
-        <h2 className="flex justify-center items-center w-full min-h-screen  text-white">
-          Loading...
-        </h2>
-      )}
       {isAuth && !isFetching && !isLoading ? (
         <>
           <SearchForm searchQuery={searchHandler} />
@@ -69,14 +64,16 @@ export const MoviesPage = () => {
                 key={movie._id}
                 className="gap-7  md:hover:scale-150 hover:z-50 duration-400 ease-in-out"
               >
-                <MovieItemPage movie={movie} />
+                <MovieItemPage movie={movie} user={user} />
               </li>
             ))}
           </ul>
           <Pagination clickPageHandler={clickPageHandler} />
         </>
       ) : (
-        <h1>you aren't autorized</h1>
+        <h1 className="flex flex-row flex-wrap gap-7 justify-center mb-16 px-4">
+          Loading...
+        </h1>
       )}
     </>
   );

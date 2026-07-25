@@ -2,10 +2,13 @@ import { useEffect, type ReactNode } from 'react';
 // import { getCurrentUser } from '../api/usersServices';
 import {
   selectASetIsFetching,
+  selectIsFetching,
   selectSetUser,
+  selectUser,
   useAuthStore,
 } from '../stores/authStore';
 import { resreshSession } from '../api/authService';
+import { getCurrentUser } from '../api/usersServices';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -14,6 +17,7 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const setUser = useAuthStore(selectSetUser);
   const setIsFetching = useAuthStore(selectASetIsFetching);
+  const isFetching = useAuthStore(selectIsFetching);
 
   useEffect(() => {
     const init = async () => {
@@ -23,16 +27,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const data = await resreshSession();
 
         if (data.success) {
-          setUser(data.user);
+          const user = await getCurrentUser();
+          setUser(user);
         }
       } catch (error) {
         console.log(error);
       } finally {
         setIsFetching(false);
       }
-      // const user = await getCurrentUser();
     };
     init();
-  }, [setUser, setIsFetching]);
+  }, [setIsFetching, setUser]);
+
+  if (isFetching) {
+    return <h2>Loading....</h2>;
+  }
+
   return children;
 };

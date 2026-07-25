@@ -15,8 +15,8 @@ export const useAuthStore = create<AuthStore>()(set => ({
   isAuth: false,
   user: null,
   isUserFetching: true,
-  setUser: user => set(() => ({ user, isAuth: true })),
-  setIsFetching: isUserFetching => set(() => ({ isUserFetching })),
+  setUser: user => set({ user, isAuth: true }),
+  setIsFetching: (value: boolean) => set({ isUserFetching: value }),
   clearAuth: () => set(() => ({ user: null, isAuth: false })),
 }));
 
