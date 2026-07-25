@@ -25,14 +25,14 @@ api.interceptors.response.use(
     if (!refreshPromise) {
       refreshPromise = api
         .post('/auth/refresh')
-        .then(res => {
-          console.log(res.data);
-          if (res.data.user) {
-            useAuthStore.getState().setUser(res.data.user);
-          }
-          console.log(res.data.user);
-          return res;
-        })
+        // .then(res => {
+        //   console.log(res.data);
+        //   if (res.data.user) {
+        //     useAuthStore.getState().setUser(res.data.user);
+        //   }
+        //   console.log(res.data.user);
+        //   return res;
+        // })
         .finally(() => (refreshPromise = null));
     }
 

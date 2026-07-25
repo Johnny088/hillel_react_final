@@ -1,5 +1,5 @@
 import { useEffect, type ReactNode } from 'react';
-import { getCurrentUser } from '../api/usersServices';
+// import { getCurrentUser } from '../api/usersServices';
 import { selectSetUser, useAuthStore } from '../stores/authStore';
 import { resreshSession } from '../api/authService';
 
@@ -12,10 +12,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const init = async () => {
-      const isSuccess = await resreshSession();
-      if (isSuccess) {
-        const user = await getCurrentUser();
-        setUser(user);
+      const data = await resreshSession();
+      if (data.success) {
+        // const user = await getCurrentUser();
+        setUser(data.user);
       }
     };
     init();
