@@ -21,7 +21,7 @@ export type Genres =
   | 'Western';
 
 export interface User {
-  _id: string | null;
+  // _id: string | null;
   username: string | null;
   email: string;
   avatarUrl: string | null;

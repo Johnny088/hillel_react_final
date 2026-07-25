@@ -12,11 +12,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const init = async () => {
-      const data = await resreshSession();
-      if (data.success) {
-        // const user = await getCurrentUser();
-        setUser(data.user);
+      try {
+        const data = await resreshSession();
+        if (data.success) {
+          setUser(data.user);
+        }
+      } catch (error) {
+        console.log(error);
       }
+      // const user = await getCurrentUser();
     };
     init();
   }, [setUser]);

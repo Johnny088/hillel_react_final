@@ -14,8 +14,7 @@ export const SignIn = () => {
 
     console.log(user);
     setUser(user);
-
-    navigate('/');
+    navigate('/movies');
   };
 
   return (
