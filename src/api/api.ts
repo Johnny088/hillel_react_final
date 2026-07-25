@@ -1,5 +1,6 @@
 import axios, { type AxiosResponse } from 'axios';
 import type { RefreshResponse } from '../types/index';
+import { useAuthStore } from '../stores/authStore';
 
 export const api = axios.create({
   // baseURL: import.meta.env.BASE_URL,
@@ -23,7 +24,11 @@ api.interceptors.response.use(
 
     if (!refreshPromise) {
       refreshPromise = api
-        .post('/auth/refresh')
+        .post<RefreshResponse>('/auth/refresh')
+        .then(res => {
+          useAuthStore.getState().setUser(res.data.user);
+          return res;
+        })
         .finally(() => (refreshPromise = null));
     }
 
@@ -31,7 +36,7 @@ api.interceptors.response.use(
       await refreshPromise;
       return api(originalRequest);
     } catch (error) {
-      window.location.href = '/login';
+      window.location.href = '/';
       return Promise.reject(error);
     }
   },
