@@ -1,0 +1,9 @@
+.link {
+  color: white;
+  &:hover {
+    color: rgb(110, 68, 68);
+  }
+}
+.activeLink {
+  color: brown;
+}

@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
-// import type { Movie } from '../../types/index';
-import {
-  selectIsAuth,
-  selectIsFetching,
-  selectUser,
-  useAuthStore,
-} from '../../stores/authStore';
+
+import { selectIsAuth, selectUser, useAuthStore } from '../../stores/authStore';
 import { getMovies } from '../../api/moviesService';
 import { MovieItemPage } from '../MovieItemPage/MovieItemPage';
 import { Pagination } from '../../components/Pagination/Pagination';
@@ -24,7 +19,6 @@ export const MoviesPage = () => {
   const [search, setSearch] = useState('');
   const [limit] = useState(10);
   const genre = useMoviesStore(selectGenre);
-  const isFetching = useAuthStore(selectIsFetching);
 
   const { data: movies } = useQuery({
     queryKey: ['movies', search, page, limit, genre],

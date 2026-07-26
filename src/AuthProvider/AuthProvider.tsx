@@ -1,10 +1,9 @@
 import { useEffect, type ReactNode } from 'react';
-// import { getCurrentUser } from '../api/usersServices';
+
 import {
   selectASetIsFetching,
   selectIsFetching,
   selectSetUser,
-  selectUser,
   useAuthStore,
 } from '../stores/authStore';
 import { resreshSession } from '../api/authService';
