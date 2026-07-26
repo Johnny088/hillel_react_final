@@ -22,9 +22,9 @@ export type Genres =
 
 export interface User {
   // _id: string | null;
-  username: string | null;
+  username: string;
   email: string;
-  avatarUrl: string | null;
+  avatarUrl: string;
   role: 'user' | 'admin';
 }
 

@@ -26,11 +26,7 @@ export const MoviesPage = () => {
   const genre = useMoviesStore(selectGenre);
   const isFetching = useAuthStore(selectIsFetching);
 
-  const {
-    data: movies,
-    // error,
-    isLoading,
-  } = useQuery({
+  const { data: movies } = useQuery({
     queryKey: ['movies', search, page, limit, genre],
     queryFn: () => getMovies({ search, page, limit, genre }),
 
@@ -55,7 +51,7 @@ export const MoviesPage = () => {
 
   return (
     <>
-      {isAuth && !isFetching && !isLoading ? (
+      {isAuth && (
         <>
           <SearchForm searchQuery={searchHandler} />
           <ul className="flex flex-row flex-wrap gap-7 justify-center mb-16 px-4">
@@ -70,10 +66,6 @@ export const MoviesPage = () => {
           </ul>
           <Pagination clickPageHandler={clickPageHandler} />
         </>
-      ) : (
-        <h1 className="flex flex-row flex-wrap gap-7 justify-center mb-16 px-4">
-          Loading...
-        </h1>
       )}
     </>
   );

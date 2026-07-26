@@ -34,9 +34,11 @@ export const NavBar = () => {
         <button>Home</button>
       </Link>
 
-      <Link to="/add">
-        <button>add movie</button>
-      </Link>
+      {user?.role === 'admin' && (
+        <Link to="/add">
+          <button>add movie</button>
+        </Link>
+      )}
 
       <GenreDropdown genreHandler={genreHandler} />
       <button onClick={logoutHandler}>Logout</button>

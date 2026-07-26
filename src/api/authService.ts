@@ -1,7 +1,5 @@
 import type { AuthData, RefreshResponse, User } from '../types/index';
 import { api } from './api';
-import { useAuthStore } from '../stores/authStore';
-import { getCurrentUser } from './usersServices';
 
 export const signUp = async (authData: AuthData) => {
   const { data } = await api.post<User>('/auth/sign-up', authData);

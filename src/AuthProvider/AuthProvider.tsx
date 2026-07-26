@@ -40,7 +40,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, [setIsFetching, setUser]);
 
   if (isFetching) {
-    return <h2>Loading....</h2>;
+    return (
+      <h2 className="flex justify-center items-center w-full min-h-screen">
+        Loading....
+      </h2>
+    );
   }
 
   return children;

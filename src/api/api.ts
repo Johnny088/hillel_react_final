@@ -1,12 +1,10 @@
 import axios, { type AxiosResponse } from 'axios';
 import type { RefreshResponse } from '../types/index';
-// import { useAuthStore } from '../stores/authStore';
-// import { getCurrentUser } from './usersServices';
 
 export const api = axios.create({
   // baseURL: import.meta.env.BASE_URL,
-  baseURL: 'https://hillel-node-final.onrender.com',
-  // baseURL: 'http://localhost:8000',
+  // baseURL: 'https://hillel-node-final.onrender.com',
+  baseURL: 'http://localhost:8000',
   withCredentials: true,
 });
 
