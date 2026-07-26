@@ -10,6 +10,7 @@ import { GenreDropdown } from '../GenreDropdown/GenreDropdown';
 import { selectSetGenre, useMoviesStore } from '../../stores/moviesStore';
 import type { Genres } from '../../types/index';
 import css from './Navbar.module.css';
+import { toast, ToastContainer } from 'react-toastify';
 
 export const NavBar = () => {
   const navigate = useNavigate();
@@ -32,6 +33,9 @@ export const NavBar = () => {
     navigate('/');
   };
 
+  const showToast = () => {
+    toast.success('Moving to home');
+  };
   return (
     <nav className="flex justify-between items-center px-4 md:px-8 md:text-2xl">
       <ul className="flex gap-4 md:gap-16 items-center">
@@ -50,7 +54,12 @@ export const NavBar = () => {
           </NavLink>
         )}
         <li>{isAuth && <GenreDropdown genreHandler={genreHandler} />}</li>
+        <li>
+          <button onClick={() => showToast()}>toast</button>
+        </li>
       </ul>
+
+      <ToastContainer />
 
       {isAuth && (
         <button onClick={logoutHandler} className="text-base md:text-2xl">

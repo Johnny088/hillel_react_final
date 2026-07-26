@@ -32,7 +32,7 @@ api.interceptors.response.use(
       await refreshPromise;
       return api(originalRequest);
     } catch (error) {
-      window.location.href = '/';
+      // window.location.href = '/';
       return Promise.reject(error);
     }
   },

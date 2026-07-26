@@ -1,20 +1,20 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../../components/AuthForm/AuthForm';
 import type { AuthData } from '../../types/index';
 import { signIn } from '../../api/authService';
 import { selectSetUser, useAuthStore } from '../../stores/authStore';
+import { toast, ToastContainer } from 'react-toastify';
 
 export const SignIn = () => {
-  const navigate = useNavigate();
-
   const setUser = useAuthStore(selectSetUser);
 
   const login = async (authData: AuthData) => {
-    const user = await signIn(authData);
-
-    console.log(user);
-    setUser(user);
-    navigate('/movies');
+    try {
+      const user = await signIn(authData);
+      setUser(user);
+    } catch {
+      toast.error('email or password is wrong');
+    }
   };
 
   return (
@@ -23,6 +23,7 @@ export const SignIn = () => {
         Sign In
       </h1>
       <AuthForm onSubmit={login} />
+      <ToastContainer />
     </div>
   );
 };
