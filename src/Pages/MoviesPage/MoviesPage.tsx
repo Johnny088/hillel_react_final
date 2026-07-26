@@ -11,7 +11,7 @@ import {
   selectSetTotalPages,
   useMoviesStore,
 } from '../../stores/moviesStore';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import type { Movie } from '../../types';
 
 export const MoviesPage = () => {
@@ -75,6 +75,7 @@ export const MoviesPage = () => {
             ))}
           </ul>
           <Pagination clickPageHandler={clickPageHandler} />
+          <ToastContainer />
         </>
       )}
     </>

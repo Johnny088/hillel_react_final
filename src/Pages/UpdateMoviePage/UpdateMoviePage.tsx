@@ -1,21 +1,31 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getMovieById, updateMovie } from '../../api/moviesService';
 import { MovieForm } from '../../components/MovieForm/MovieForm';
 import type { Movie } from '../../types';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const UpdateMoviePage = () => {
   const [currentMovieData, setCurrentMovieData] = useState<Movie | null>(null);
+
   const { id } = useParams();
+
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: updateMovie,
+
     onSuccess() {
       toast.success('the movie has been updated');
-      queryClient.invalidateQueries({ queryKey: ['movies'] });
+
+      queryClient.invalidateQueries({
+        queryKey: ['movies'],
+      });
+      setTimeout(() => {
+        navigate(-1);
+      }, 1000);
     },
     onError() {
       toast.error('something went wrong');
@@ -33,6 +43,7 @@ export const UpdateMoviePage = () => {
 
   const hanleUpdateMovie = async (movieData: Movie) => {
     if (!id) return;
+
     const updatedMovie = {
       title: movieData.title,
       releaseDate: movieData.releaseDate,
@@ -44,18 +55,6 @@ export const UpdateMoviePage = () => {
     };
 
     mutate({ _id: id, movieData: updatedMovie });
-    // const res = await updateMovie(id, updatedMovie);
-    // if (!res) {
-    //   toast.error('something went wrong');
-    //   setTimeout(() => {
-    //     return;
-    //   }, 1000);
-    // }
-
-    // toast.success('the movie has been updated');
-    // setTimeout(() => {
-    //   navigate('/');
-    // }, 1000);
   };
 
   return (
@@ -67,6 +66,7 @@ export const UpdateMoviePage = () => {
         movieAction={hanleUpdateMovie}
         currentMovieData={currentMovieData}
       />
+      <ToastContainer />
     </div>
   );
 };

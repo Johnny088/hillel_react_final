@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { addNewMovie } from '../../api/moviesService';
 import { MovieForm } from '../../components/MovieForm/MovieForm';
-import type { CreateMovie, Movie } from '../../types';
+import type { CreateMovie } from '../../types';
 import { toast, ToastContainer } from 'react-toastify';
 
 export const MovieCreatePage = () => {
