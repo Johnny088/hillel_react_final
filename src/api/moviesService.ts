@@ -44,10 +44,12 @@ export const addNewMovie = async (movieData: CreateMovie) => {
   return data;
 };
 
-export const updateMovie = async (
-  _id: Movie['_id'],
-  movieData: CreateMovie,
-) => {
+interface UpdatedData {
+  _id: Movie['_id'];
+  movieData: CreateMovie;
+}
+
+export const updateMovie = async ({ _id, movieData }: UpdatedData) => {
   const { data } = await api.put<Movie>(`/movies/${_id}`, movieData);
   return data;
 };

@@ -36,10 +36,6 @@ interface Props {
 }
 
 export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
-  console.log('form component');
-
-  console.log(currentMovieData);
-
   const handleSubmit = (values: Movie) => {
     console.log(values);
 

@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { selectIsAuth, selectUser, useAuthStore } from '../../stores/authStore';
-import { getMovies } from '../../api/moviesService';
+import { deleteMovie, getMovies } from '../../api/moviesService';
 import { MovieItemPage } from '../MovieItemPage/MovieItemPage';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   selectGenre,
   selectSetTotalPages,
   useMoviesStore,
 } from '../../stores/moviesStore';
+import { toast } from 'react-toastify';
+import type { Movie } from '../../types';
 
 export const MoviesPage = () => {
   const setTotalPages = useMoviesStore(selectSetTotalPages);
@@ -19,6 +21,19 @@ export const MoviesPage = () => {
   const [search, setSearch] = useState('');
   const [limit] = useState(10);
   const genre = useMoviesStore(selectGenre);
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: deleteMovie,
+    onSuccess() {
+      toast.success('The movie has been removed');
+      queryClient.invalidateQueries({ queryKey: ['movies'] });
+    },
+  });
+
+  const deleteHandler = (id: Movie['_id']) => {
+    mutate(id);
+  };
 
   const { data: movies } = useQuery({
     queryKey: ['movies', search, page, limit, genre],
@@ -39,9 +54,6 @@ export const MoviesPage = () => {
     setPage(1);
   };
   const user = useAuthStore(selectUser);
-  useEffect(() => {
-    console.log(user);
-  }, []);
 
   return (
     <>
@@ -54,7 +66,11 @@ export const MoviesPage = () => {
                 key={movie._id}
                 className="gap-7  md:hover:scale-150 hover:z-50 duration-400 ease-in-out"
               >
-                <MovieItemPage movie={movie} user={user} />
+                <MovieItemPage
+                  movie={movie}
+                  user={user}
+                  deleteHandler={deleteHandler}
+                />
               </li>
             ))}
           </ul>
