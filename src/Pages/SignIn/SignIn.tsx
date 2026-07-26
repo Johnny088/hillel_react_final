@@ -1,4 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../../components/AuthForm/AuthForm';
 import type { AuthData } from '../../types/index';
 import { signIn } from '../../api/authService';
