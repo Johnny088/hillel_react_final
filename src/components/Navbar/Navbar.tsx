@@ -34,7 +34,7 @@ export const NavBar = () => {
 
   return (
     <nav className="flex flex-col justify-between items-center px-4 sm:flex-row md:px-8 md:text-2xl">
-      <ul className="flex gap-4 md:gap-16 items-center">
+      <ul className="flex flex-col sm:flex-row gap-4 md:gap-16 items-center">
         <NavLink
           className={({ isActive }) => (isActive ? css.activeLink : css.link)}
           to="/movies"

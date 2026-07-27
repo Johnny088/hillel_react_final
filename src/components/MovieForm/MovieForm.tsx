@@ -51,7 +51,7 @@ export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
       initialValues={currentMovieData ? currentMovieData : initialValues}
       validationSchema={movieSchema}
     >
-      <Form className="w-full max-w-2xl mx-auto p-4 sm:p-6 md:p-8 bg-white border border-slate-200 rounded-xl shadow-sm space-y-5 text-slate-800 mb-16">
+      <Form className="w-3/4 max-w-2xl mx-auto p-4 sm:p-6 md:p-8 bg-white border border-slate-200 rounded-xl shadow-sm space-y-5 text-slate-800 mb-16">
         <label className={labelClass}>
           Title
           <Field type="text" name="title" className={inputClass} />
@@ -147,7 +147,7 @@ export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
 
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-red-500 hover:bg-red-700 active:bg-red-800 text-white rounded-md shadow transition-colors focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2 duration-300"
+          className="w-3/4 max-w-2xl py-2 px-4 bg-red-500 hover:bg-red-700 active:bg-red-800 text-white rounded-md shadow transition-colors focus:outline-none focus:ring-2 focus:ring-red-700 focus:ring-offset-2 duration-300"
         >
           Submit
         </button>
