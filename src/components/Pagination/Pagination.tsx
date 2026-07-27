@@ -15,7 +15,7 @@ export const Pagination = ({ clickPageHandler }: Props) => {
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   return (
-    <ul className="flex flex-wrap justify-center gap-1.5 md:gap-0">
+    <ul className="flex flex-wrap justify-center gap-1.5 md:gap-0 px-10">
       {pages.map(page => (
         <li
           key={page}

@@ -60,7 +60,7 @@ export const MoviesPage = () => {
       {isAuth && (
         <>
           <SearchForm searchQuery={searchHandler} />
-          <ul className="flex flex-row flex-wrap gap-7 justify-center mb-16 px-4">
+          <ul className="flex flex-row flex-wrap gap-7 justify-center mb-16 px-10">
             {movies?.movies?.map(movie => (
               <li
                 key={movie._id}

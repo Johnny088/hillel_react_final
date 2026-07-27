@@ -41,7 +41,7 @@ export const MovieForm = ({ movieAction, currentMovieData }: Props) => {
   };
 
   const inputClass =
-    'mt-1 block w-full text-base md:text-sm px-3 py-2 bg-white border border-slate-300 rounded-md  shadow-sm placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500';
+    'mt-1 block w-full text-base md:text-sm px-3 h-10 bg-white border border-slate-300 rounded-md  shadow-sm placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500';
   const labelClass = 'block text-sm  text-slate-700';
 
   return (
