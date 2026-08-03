@@ -8,6 +8,8 @@ import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   selectGenre,
+  selectPage,
+  selectSetPage,
   selectSetTotalPages,
   useMoviesStore,
 } from '../../stores/moviesStore';
@@ -17,11 +19,15 @@ import type { Movie } from '../../types';
 export const MoviesPage = () => {
   const setTotalPages = useMoviesStore(selectSetTotalPages);
   const isAuth = useAuthStore(selectIsAuth);
-  const [page, setPage] = useState<number>(1);
   const [search, setSearch] = useState('');
   const [limit] = useState(10);
+
   const genre = useMoviesStore(selectGenre);
+
   const queryClient = useQueryClient();
+
+  const page = useMoviesStore(selectPage);
+  const setPage = useMoviesStore(selectSetPage);
 
   const { mutate } = useMutation({
     mutationFn: deleteMovie,
@@ -46,7 +52,7 @@ export const MoviesPage = () => {
 
   const clickPageHandler = (newPage: number) => {
     setPage(newPage);
-    console.log(page);
+    // console.log(page);
   };
 
   const searchHandler = (queryKey: string) => {

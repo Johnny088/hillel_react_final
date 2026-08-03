@@ -6,6 +6,8 @@ interface MoviesStore {
   setGenre: (value: Genres) => void;
   totalPages: number;
   setTotalPages: (value: number) => void;
+  page: number;
+  setPage: (value: number) => void;
 }
 
 export const useMoviesStore = create<MoviesStore>()(set => ({
@@ -13,6 +15,8 @@ export const useMoviesStore = create<MoviesStore>()(set => ({
   totalPages: 1,
   setGenre: value => set({ genre: value }),
   setTotalPages: value => set({ totalPages: value }),
+  page: 1,
+  setPage: value => set({ page: value }),
 }));
 
 export const selectGenre = (state: MoviesStore) => state.genre;
@@ -20,3 +24,6 @@ export const selectSetGenre = (state: MoviesStore) => state.setGenre;
 
 export const selectTotalPages = (state: MoviesStore) => state.totalPages;
 export const selectSetTotalPages = (state: MoviesStore) => state.setTotalPages;
+
+export const selectPage = (state: MoviesStore) => state.page;
+export const selectSetPage = (state: MoviesStore) => state.setPage;
